@@ -1,0 +1,33 @@
+{# templates/app/test-upload.html.twig #}
+
+{% block title %} Имя сотрудника: {{ worker.name  }} {% endblock %}
+<br>
+{% if worker.parent %}
+   Босс: {{ worker.parent.name }}
+{% endif %}
+<br>
+<br>
+{% if worker.children %}
+         Подчиненные:
+        <div id="categories">
+                <ul>
+                        {% for child in worker.children %}
+                                {{ _self.recursiveCategory(child) }}
+                        {% endfor %}
+                </ul>
+        </div>
+{% endif %}
+
+{% macro recursiveCategory(worker) %}
+    <li>
+        {{ worker.name }}
+
+        {% if worker.children|length %}
+            <ul>
+                {% for child in worker.children %}
+                    {{ _self.recursiveCategory(child) }}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endmacro %}

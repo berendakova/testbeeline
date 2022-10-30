@@ -1,3 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+testAction:
+    path: /test-upload
+    controller: App\Controller\UploadFileController::testAction
+searchByNameAction:
+    path: /search
+    controller: App\Controller\BossSubordinateViewController::searchByNameAction
